@@ -94,26 +94,26 @@ public class Principal {
                     boolean entradaValida = false;
                     boolean entradaSalida = false;
                     while (!entradaValida) {
-                        System.out.println("Ingresa una moneda:");
+                        System.out.println("Ingresa nombre de moneda Origen:");
                         monedaOrigen = teclado.nextLine();
 
                         // Validar la moneda proporcionada por el usuario
                         if (convertidor.validarMoneda(monedaOrigen)) { // Llamar al método desde la instancia
                             entradaValida = true;
                         } else {
-                            System.out.println("Moneda inválida. Ingresa una moneda válida.");
+                            System.out.println("Moneda inválida. Ingresa un nombre de moneda válida.");
                         }
                     }
 
                     while (!entradaSalida) {
-                        System.out.println("Ingrese moneda destino:");
+                        System.out.println("Ingrese nombre de moneda destino:");
                         monedaDestino = teclado.nextLine();
 
                         // Validar la moneda proporcionada por el usuario
                         if (convertidor.validarMoneda(monedaDestino)) { // Llamar al método desde la instancia
                             entradaSalida = true;
                         } else {
-                            System.out.println("Moneda inválida. Ingresa una moneda válida.");
+                            System.out.println("Moneda inválida. Ingresa un nombre de moneda válida.");
                         }
                     }
 
