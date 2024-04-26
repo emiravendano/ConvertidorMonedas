@@ -6,6 +6,8 @@ import java.net.URL;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -34,5 +36,11 @@ public class ConvertidorDeMoneda {
         double tasaMonedaDestino = respuestaAPI.conversion_rates().getOrDefault(monedaDestino, 1.0);
         return (cantidad / tasaMonedaOrigen) * tasaMonedaDestino;
     }
+    public boolean validarMoneda(String monedaNombre) throws IOException {
+        RespuestaApi respuestaAPI = obtenerDatosConversion();
+        return respuestaAPI.conversion_rates().containsKey(monedaNombre);
+    }
+
+
 
 }

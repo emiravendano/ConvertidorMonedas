@@ -2,12 +2,15 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class Principal {
-    public static void main(String[] args) {
+
+    public static void main(String[] args) throws IOException {
         int opcion =0;
         double cantidad=0;
         String monedaOrigen="";
         String monedaDestino="";
         ConvertidorDeMoneda convertidor = new ConvertidorDeMoneda();
+
+
 
         String menu = """
                 ***Escriba el numero de la opcion deseada***
@@ -86,11 +89,34 @@ public class Principal {
                     PKR: Rupia pakistaní (Pakistán)
                     PLN: Złoty (Polonia)
                     """);
-                    System.out.println("Ingrese moneda de origen:");
-                    teclado.nextLine(); // Consumir el carácter de nueva línea pendiente
-                    monedaOrigen = teclado.nextLine();
-                    System.out.println("Ingrese moneda destino:");
-                    monedaDestino = teclado.nextLine();
+
+                    // Solicitar la moneda al usuario hasta que proporcione una válida
+                    boolean entradaValida = false;
+                    boolean entradaSalida = false;
+                    while (!entradaValida) {
+                        System.out.println("Ingresa una moneda:");
+                        monedaOrigen = teclado.nextLine();
+
+                        // Validar la moneda proporcionada por el usuario
+                        if (convertidor.validarMoneda(monedaOrigen)) { // Llamar al método desde la instancia
+                            entradaValida = true;
+                        } else {
+                            System.out.println("Moneda inválida. Ingresa una moneda válida.");
+                        }
+                    }
+
+                    while (!entradaSalida) {
+                        System.out.println("Ingrese moneda destino:");
+                        monedaDestino = teclado.nextLine();
+
+                        // Validar la moneda proporcionada por el usuario
+                        if (convertidor.validarMoneda(monedaDestino)) { // Llamar al método desde la instancia
+                            entradaSalida = true;
+                        } else {
+                            System.out.println("Moneda inválida. Ingresa una moneda válida.");
+                        }
+                    }
+
                     break;
                 case 8:
                     System.out.println("Gracias por usar la aplicación");
